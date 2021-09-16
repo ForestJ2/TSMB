@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title class="site-name"></title>
+
+        <meta name="robots" content="index, follow"/>
+		<meta name="description" content=""/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta class="og-title" property="og:title" content="Web Page Title"/>
+		<meta property="og:type" content="website"/>
+		<meta class="og-image" property="og:image" content=""/>
+		<meta class="og-url" property="og:url" content="Full Base URL"/>
+		<meta class="og-title" property="og:site_name" content="Full Site Name"/>
+		<meta class="og-description" property="og:description" content=""/>
+
+        <link rel="manifest" href="/site.webmanifest">
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/atom-one-light.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<script src="/script/main.js"></script>
+		<script>
+			var navFlipped = false;
+			var x = window.matchMedia("(max-width:767px)");
+
+			function adjustPage(e) {
+				var nodes = $("#main-body")[0].childNodes;
+				if ((e.matches && !navFlipped) || (!e.matches && navFlipped)) {
+					$("#main-body")[0].insertBefore(nodes[3], nodes[2]);
+					$("#main-body")[0].insertBefore(nodes[1], nodes[4]);
+					navFlipped = !navFlipped;
+				}
+			}
+
+			$(document).ready(function(){
+				var url_path = "";
+				if (window.location.href.includes("#")) {
+					url_path = window.location.href.split("#")[1];
+				}
+
+				loadSite(url_path);
+
+				adjustPage(x);
+				x.addListener(adjustPage);
+			});
+		</script>
+		<style>
+			.sticky-top{top: 0.5em;}
+			#side-nav{
+				padding: 0.25rem;
+				border-radius: 0.25rem;
+				border: 1px solid #dfdfdf;
+				background-color: #fefefe;
+				height: max-content;
+				min-height: 10rem;
+			}
+			#main-container{
+				border-radius: 0.25rem;
+				padding: 0 5rem 2rem 5rem;
+				/*background-color: rgba(231, 231, 242, 0.37);*/
+			}
+			.jumbotron{
+				border-radius: 0;
+				background-size: contain;
+				background-repeat: no-repeat;
+				-webkit-background-size: 100% 100%;
+    			-moz-background-size: 100% 100%;
+    			-o-background-size: 100% 100%;
+    			background-size: 100% 100%;
+			}
+			.table{
+				max-width: max-content;
+				margin: 2rem auto;
+				border: 1px solid;
+			}
+			.blockquote{
+				background-color: #f7f7f7;
+				border-left: 2px solid #000;
+				padding: 1rem 1rem 0.3rem 1rem;
+
+			}
+			#site-name{
+				bottom: 50%;
+     			transform: translateY(50%)
+			}
+			pre {
+				background-color: #f1f1f1;
+				width: max-content;
+				border-radius: 0.25rem;
+				text-align: start;
+			}
+			pre code {margin:5px;}
+			.blog-title{text-decoration: underline;}
+			.blog-header{margin-top: 2.5rem;}
+			.blog-link{
+				display: inline-block;
+				width: max-content;
+				margin-top: 1rem;
+			}
+			.blog-center {margin: -4rem 0;}
+			p:before {content: "\00a0 ";}
+			@media screen and (max-width:767px){
+				#main-container{
+					padding: 0 0.5rem 0.5rem 0.5rem;
+				}
+			}
+		</style>
+    </head>
+    <body>
+		<div class="container-fluid">
+			<div class="row justify-content-around text-center mt-4">
+				<h1 class="site-name font-weight-bold">
+					Blog loading <div class="spinner-border text-primary"></div>
+				</h1>
+			</div>
+			<div class="row justify-content-around text-center">
+				<p class="lead og-description font-italic"></p>
+			</div>
+			<div id="main-body" class="row justify-content-around mt-5">
+				<div id="side-nav" class="col-md-2 mt-4 sticky-top">
+					<h4 class="text-center" style="margin:0;">Blog Posts</h4>
+					<ul id="side-nav-links" class="nav nav-pills flex-column">
+					</ul>
+				</div>
+				<div id="main-container" class="col-md-9">
+					
+				</div>
+			</div>
+        </div>
+
+		<footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50" style="margin-top:2rem">
+			<div class="container text-center">
+                <small>Copyright &copy; <span id="year"></span> <span id="copyright"></span></small>
+			</div>
+		</footer>
+    </body>
+</html>
