@@ -6,7 +6,7 @@ I built this after searching for a simple markdown blogging platform that didn't
 
 Place the contents of the `html` folder in this respository onto any webserver of your choice. If you have a simple setup, that could possibly be `var/www/html`.
 
-SMB should now be installed and running on your server. The SEO tags in the head section of the html file can't be filled with Javascript, so you should modify `ndex.html` to fit your blog's information.
+SMB should now be installed and running on your server. The SEO tags in the head section of the html file can't be filled with Javascript, so you should modify `index.html` to fit your blog's information.
 
 ## What's Used
 
