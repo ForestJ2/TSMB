@@ -1,5 +1,7 @@
 # The Simple Markdown Blog
 
+[Live Example](https://blog.gruver.tech)
+
 I built this after searching for a simple markdown blogging platform that didn't require Node.JS or some specific server dependency to run, despite most of them having "simple" in the name.
 
 ## Installation
